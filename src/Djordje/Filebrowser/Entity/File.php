@@ -1,10 +1,9 @@
 <?php namespace Djordje\Filebrowser\Entity;
 
-use Djordje\Filestorage\Entity\Djordje;
+use Djordje\Filebrowser\Entity\FileInterface;
 use Djordje\Filebrowser\Repositories\RepositoryInterface;
 use Djordje\Filebrowser\Exceptions\RepositoryNotDefined;
 use Djordje\Filebrowser\Exceptions\InvalidFileNameOrPath;
-use Djordje\Filebrowser\Entity\FileInterface;
 use Illuminate\Support\Contracts\ArrayableInterface;
 use Illuminate\Support\Contracts\JsonableInterface;
 
@@ -53,7 +52,7 @@ class File implements FileInterface, JsonableInterface, ArrayableInterface {
 	protected $dir = null;
 
 	/**
-	 * @var Djordje\Filestorage\Repository\RepositoryInterface
+	 * @var \Djordje\Filebrowser\Repositories\RepositoryInterface
 	 */
 	protected $repository;
 

@@ -2,12 +2,10 @@
 
 use DirectoryIterator;
 use Djordje\Filebrowser\Entity\File;
-use Djordje\Filebrowser\Repositories\AbstractRepository;
-use Djordje\Filebrowser\Repositories\RepositoryInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 
-class LocalFilesystem extends \Djordje\Filebrowser\Repositories\AbstractRepository implements RepositoryInterface {
+class LocalFilesystem extends AbstractRepository implements RepositoryInterface {
 
 	/**
 	 * @var \Symfony\Component\Filesystem\Filesystem

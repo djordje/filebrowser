@@ -9,7 +9,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-		$this->repository = m::mock('Djordje\Filebrowser\Repositories\RepositoryInterface');
+		$this->repository = m::mock('\Djordje\Filebrowser\Repositories\RepositoryInterface');
 	}
 
 	public function tearDown()
@@ -18,7 +18,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Djordje\Filebrowser\Exceptions\InvalidFileNameOrPath
+	 * @expectedException \Djordje\Filebrowser\Exceptions\InvalidFileNameOrPath
 	 */
 	public function testEntityCreationWithoutName()
 	{
@@ -26,15 +26,15 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Djordje\Filebrowser\Exceptions\InvalidFileNameOrPath
+	 * @expectedException \Djordje\Filebrowser\Exceptions\InvalidFileNameOrPath
 	 */
 	public function testEntityCreationWithoutPath()
 	{
-		new \Djordje\Filebrowser\Entity\File(array('name' => 'Test.txt'));
+		new File(array('name' => 'Test.txt'));
 	}
 
 	/**
-	 * @expectedException PHPUnit_Framework_Error
+	 * @expectedException \PHPUnit_Framework_Error
 	 */
 	public function testEntityCreationWithInvalidRepository()
 	{
@@ -63,18 +63,18 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @expectedException Djordje\Filebrowser\Exceptions\RepositoryNotDefined
+	 * @expectedException \Djordje\Filebrowser\Exceptions\RepositoryNotDefined
 	 */
 	public function testRepositoryGetter()
 	{
-		$file = new \Djordje\Filebrowser\Entity\File(array(
+		$file = new File(array(
 			'path' => '/home',
 			'name' => 'Test.txt'
 		));
 
 		$file->getRepository();
 
-		$file = new \Djordje\Filebrowser\Entity\File(
+		$file = new File(
 			array(
 				'path' => '/home',
 				'name' => 'Test.txt'
@@ -87,7 +87,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 
 	public function testIsDirectoryCheckingOnRepository()
 	{
-		$file = new \Djordje\Filebrowser\Entity\File(
+		$file = new File(
 			array(
 				'path' => '/home',
 				'name' => 'Test.txt'
@@ -98,7 +98,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertFalse($file->isDir());
 
-		$file = new \Djordje\Filebrowser\Entity\File(
+		$file = new File(
 			array(
 				'path' => '/home',
 				'name' => 'test'
@@ -112,7 +112,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 
 	public function testExtensionGetterIfExtensionNotProvidedToEntity()
 	{
-		$file = new \Djordje\Filebrowser\Entity\File(array(
+		$file = new File(array(
 			'path' => '/home',
 			'name' => 'Test.txt',
 			'dir'  => false
@@ -123,7 +123,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 
 	public function testExtensionGetterIfExtensionAndIsDirNotProvidedToEntity()
 	{
-		$file = new \Djordje\Filebrowser\Entity\File(
+		$file = new File(
 			array(
 				'path' => '/home',
 				'name' => 'Test.txt'
@@ -157,7 +157,7 @@ class FileTest extends \PHPUnit_Framework_TestCase {
 			'dir'  => false
 		);
 		$expectedJson = json_encode($expectedArray);
-		$file = new \Djordje\Filebrowser\Entity\File($expectedArray);
+		$file = new File($expectedArray);
 
 		$this->assertEquals($expectedArray, $file->toArray());
 		$this->assertEquals($expectedJson, $file->toJson());

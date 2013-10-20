@@ -11,7 +11,7 @@ class LocalFilesystemTest extends FilesystemTestCase {
 	public function setUp()
 	{
 		parent::setUp();
-		$this->repository = new \Djordje\Filebrowser\Repositories\LocalFilesystem(new Filesystem());
+		$this->repository = new LocalFilesystem(new Filesystem());
 		$this->repository->configure(array(
 			'location' => $this->workspace
 		));

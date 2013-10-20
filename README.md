@@ -1,4 +1,4 @@
-## PHP Filebrowse - manipulate your files from PHP
+## PHP Filebrowser - manipulate your files from PHP
 
 [![Build Status](https://travis-ci.org/djordje/filebrowser.png?branch=master)](https://travis-ci.org/djordje/filebrowser)
 
