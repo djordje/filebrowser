@@ -65,6 +65,27 @@ class LocalFilesystemTest extends FilesystemTestCase {
 		$this->assertEmpty($this->repository->ls('empty-dir')->toArray());
 
 		$this->assertFalse($this->repository->ls('undefined'));
+
+		$expected = array(
+			'home/subdir' => array(
+				'name' => 'subdir',
+				'path' => $this->workspace.'/home',
+				'ext'  => null,
+				'size' => 0,
+				'mode' => substr(sprintf('%o', fileperms($this->workspace.'/home')), -4),
+				'dir'  => true
+			),
+			'home/Test.txt' => array(
+				'name' => 'Test.txt',
+				'path' => $this->workspace.'/home',
+				'ext'  => 'txt',
+				'size' => filesize($this->workspace.'/home/Test.txt'),
+				'mode' => substr(sprintf('%o', fileperms($this->workspace.'/home/Test.txt')), -4),
+				'dir'  => false,
+			)
+		);
+
+		$this->assertEquals($expected, $this->repository->ls('home')->toArray());
 	}
 
 	public function testDirectoryCreation()

@@ -51,7 +51,10 @@ class LocalFilesystem extends AbstractRepository implements RepositoryInterface 
 			{
 				continue;
 			}
-			$collection->put($file->getFilename(), new File(array(
+
+			$pathRelativeToLocation = ($path) ? $path.'/'.$file->getFilename() : $file->getFilename();
+
+			$collection->put($pathRelativeToLocation, new File(array(
 				'name' => $file->getFilename(),
 				'path' => rtrim($file->getPath()),
 				'ext'  => $file->getExtension(),
